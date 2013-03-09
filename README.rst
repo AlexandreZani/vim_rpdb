@@ -30,3 +30,5 @@
    :py rpdb_continue()
 
 8. See the beautiful crash.
+
+9. Contibute bug reports, bug fixes, documentation, features and cookies...
