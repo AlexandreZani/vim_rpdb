@@ -52,6 +52,9 @@ class RpdbClient(object):
 
   def process_msg(self):
     msg = self.jsock.recv_msg()
+    if msg is None:
+      end_debug_session()
+      return
     if msg['type'] == 'current_frame':
       self.set_cur_frame(msg['file'], msg['line_no'])
 
@@ -70,6 +73,7 @@ def end_debug_session():
   if RPDB_CLIENT is not None:
     RPDB_CLIENT.cleanup()
     RPDB_CLIENT = None
+  print "Debug session ended."
 
 def do_next():
   RPDB_CLIENT.do_next()
