@@ -19,15 +19,15 @@
 
 5. Start the debugging session::
 
-   :py start_debug_session()
+   :RpdbStart
 
 6. Step through the sample program::
 
-   :py rpdb_step()
+   :RpdbStep
 
 7. Let the program finish::
 
-   :py rpdb_continue()
+   :RpdbContinue
 
 8. See the beautiful crash.
 
