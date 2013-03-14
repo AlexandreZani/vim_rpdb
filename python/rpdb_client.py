@@ -2,7 +2,7 @@ import json_socket
 import socket
 import vim
 
-class RpdbServer(object):
+class RpdbClient(object):
   def __init__(self):
     self.socket_family = socket.AF_INET
     self.socket_addr = ('localhost', 59000)
@@ -55,33 +55,33 @@ class RpdbServer(object):
     if msg['type'] == 'current_frame':
       self.set_cur_frame(msg['file'], msg['line_no'])
 
-RPDB_SERVER = None
+RPDB_CLIENT = None
 
 def start_debug_session():
-  global RPDB_SERVER
-  if RPDB_SERVER is not None:
-    RPDB_SERVER.cleanup()
-    RPDB_SERVER = None
-  RPDB_SERVER = RpdbServer()
-  RPDB_SERVER.connect()
+  global RPDB_CLIENT
+  if RPDB_CLIENT is not None:
+    RPDB_CLIENT.cleanup()
+    RPDB_CLIENT = None
+  RPDB_CLIENT = RpdbClient()
+  RPDB_CLIENT.connect()
 
 def end_debug_session():
-  global RPDB_SERVER
-  if RPDB_SERVER is not None:
-    RPDB_SERVER.cleanup()
-    RPDB_SERVER = None
+  global RPDB_CLIENT
+  if RPDB_CLIENT is not None:
+    RPDB_CLIENT.cleanup()
+    RPDB_CLIENT = None
 
 def do_next():
-  RPDB_SERVER.do_next()
+  RPDB_CLIENT.do_next()
 
 def do_step():
-  RPDB_SERVER.do_step()
+  RPDB_CLIENT.do_step()
 
 def do_continue():
-  RPDB_SERVER.do_continue()
+  RPDB_CLIENT.do_continue()
 
 def go_to_cur_frame():
-  RPDB_SERVER.go_to_cur_frame()
+  RPDB_CLIENT.go_to_cur_frame()
 
 def go_to_loc(fn, line_no):
   vim.command('e ' + fn)
