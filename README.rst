@@ -6,7 +6,7 @@
 
    git clone https://github.com/AlexandreZani/vim_rpdb.git
 
-2. Copy vim_rpdb/plugin/python_rpdb.vim into ~/.vim/plugin
+2. Copy vim_rpdb/plugin/python_rpdb.vim into ~/.vim/plugin and vim_rpdb/python into ~/.vim/
 
 3. Start the sample program::
 
